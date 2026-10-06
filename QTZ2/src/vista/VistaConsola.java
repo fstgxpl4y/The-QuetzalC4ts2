@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 import modelo.ModuloSatelite;
 
+/**
+ * VISTA (MVC): unica clase que lee del teclado e imprime en consola.
+ * No contiene reglas de negocio ni conoce el catalogo.
+ * Solo usa metodos publicos de ModuloSatelite (toString), nunca sus atributos.
+ */
 public class VistaConsola {
     private final Scanner scanner = new Scanner(System.in);
 
@@ -21,6 +26,8 @@ public class VistaConsola {
         System.out.println("==================================================================");
     }
 
+    /** Muestra la ficha completa de un modulo (un dato por linea). */
+    public void mostrar(ModuloSatelite modulo) {
         String[] partes = modulo.toString().split(" \\| ");
         System.out.println("------------------------------------------------------------------");
         System.out.println(partes[0]);
@@ -30,6 +37,7 @@ public class VistaConsola {
         System.out.println("------------------------------------------------------------------");
     }
 
+    /** Overloading: lista compacta (una linea por modulo). */
     public void mostrar(List<ModuloSatelite> modulos) {
         System.out.println("------------------------------------------------------------------");
         if (modulos.isEmpty()) {
@@ -45,6 +53,7 @@ public class VistaConsola {
         System.out.println(mensaje);
     }
 
+    /** Repite la pregunta hasta que el usuario escriba un entero valido. */
     public int leerEntero(String pregunta) {
         while (true) {
             System.out.print(pregunta);
